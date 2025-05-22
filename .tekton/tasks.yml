@@ -4,7 +4,7 @@ metadata:
   name: cleanup
 spec:
   description: This task will clean up a workspace by deleting all the fies
-  workspace:
+  workspaces:
     - name: source
   steps:
     - name: remove
@@ -32,6 +32,7 @@ spec:
           # Delete files and directories starting with .. plus any other character
           rm -rf "${WORKSPACE_SOURCE_PATH}"/..?*
         fi
+
 ---
 
 apiVersion: tekton.dev/v1beta1
@@ -39,7 +40,7 @@ kind: Task
 metadata: 
   name: nose
 spec:
-  workspace:
+  workspaces:
     - name: source
   params:
     - name: args
